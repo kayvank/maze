@@ -1,0 +1,107 @@
+name: maze
+version: 0.0.1.0
+synopsis: generate a maze
+description: See README at <https://github.com/kayvank/maze
+author: kayvank
+github: kayvank/maze
+category: Package.Category
+license: BSD-3-Clause
+
+default-extensions:
+  - LambdaCase
+  - MultiWayIf
+  - OverloadedStrings
+  # GHC2021
+  - BangPatterns
+  - BinaryLiterals
+  - ConstrainedClassMethods
+  - ConstraintKinds
+  - DeriveDataTypeable
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveLift
+  - DeriveTraversable
+  - EmptyCase
+  - EmptyDataDeriving
+  - ExistentialQuantification
+  - ExplicitForAll
+  - FlexibleContexts
+  - FlexibleInstances
+  - GADTSyntax
+  - GeneralizedNewtypeDeriving
+  - HexFloatLiterals
+  - InstanceSigs
+  - KindSignatures
+  - MultiParamTypeClasses
+  - NamedFieldPuns
+  - NumericUnderscores
+  - PolyKinds
+  - PostfixOperators
+  - RankNTypes
+  - RecordWildCards
+  - ScopedTypeVariables
+  - StandaloneDeriving
+  - StandaloneKindSignatures
+  - TupleSections
+  - TypeApplications
+  - TypeOperators
+  - TypeSynonymInstances
+
+dependencies:
+  - base >=4.11 && < 5
+  - ascii
+  - bytestring
+  - blaze-html
+  - cairo
+  - containers
+  - directory
+  - extra
+  - fgl
+  - filepath
+  - generic-lens
+  - lens
+  - MonadRandom
+  - mtl
+  - optics-core
+  - random
+  - unix
+  - vector
+library:
+  ghc-options:
+    - -Wall
+    # - -Werror
+    - -Wcompat
+    - -Widentities
+    - -Wincomplete-uni-patterns
+    - -Wincomplete-record-updates
+    - -Wno-unused-top-binds
+    - -Wno-orphans
+    # -Wno-unticked-promoted-constructors
+    # -Wno-unused-matches
+    # -Wno-unused-imports
+    # -Wredundant-constraints
+  source-dirs: src
+
+executables:
+  maze-exe:
+    source-dirs: app
+    main: Main.hs
+    dependencies:
+      - maze
+
+tests:
+  maze-test:
+    source-dirs: test
+    main: Main.hs
+    ghc-options:
+      - -Wall
+      - -threaded
+    dependencies:
+      - maze
+      - hedgehog
+      - tasty
+      - tasty-hspec
+      - tasty-hunit
+      - tasty-discover
+      - tasty-hedgehog
